@@ -7,6 +7,9 @@
 
 set -e
 
+# Change to script directory in case we're running through a desktop GUI.
+cd "$(dirname "$0")"
+
 if [ "$1" ]; then
     # Non-Interactive mode.
     CHOICE=$1
