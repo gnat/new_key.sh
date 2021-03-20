@@ -1,4 +1,4 @@
 # new_key.sh
-Convenience script for new SSH key generation.
+Helper script for safe, easy, automated SSH key generation.
 
 Licensed under public domain.
