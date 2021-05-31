@@ -1,9 +1,12 @@
 #!/bin/bash
-# Generate new keys to RSA 4096 bit standard.
-# This can be upgraded to ed25519 when dropbear supports it.
-# Usage: ./new_key.sh domain.com
-# Usage: echo "domain.com" | ./new_key.sh
-# Usage (interactive): ./new_key.sh
+# Generates new key pair.
+#     * RSA 4096 bit standard.
+#     * Can be upgraded to ed25519 when dropbear supports it.
+# Examples:
+#     new_key.sh domain.com
+#     echo "domain.com" | new_key.sh
+#     new_key.sh
+#         Interactive mode.
 
 set -e
 
@@ -24,7 +27,7 @@ if [[ ("$CHOICE" == "" || ${#CHOICE} -le 5 ) ]]; then
     echo "'${CHOICE}' is too short or invalid."
     exit 1
 fi
-
+    
 # Auto overwrite is "<<< y"
 ssh-keygen -t rsa -b 4096 -C "" -f ${CHOICE} -N "" <<< y
 
