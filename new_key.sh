@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generates new key pair.
-#     * RSA 4096 bit standard.
-#     * Can be upgraded to ed25519 when dropbear supports it.
+#     * ed25519 elliptic curve is equivalent to RSA 4096 bit standard. Ex: ssh-keygen -t rsa -b 4096
+#     * Dropbear now supports ed25519 in Ubuntu 22.04.
 # Examples:
 #     new_key.sh domain.com
 #     echo "domain.com" | new_key.sh
@@ -29,6 +29,6 @@ if [[ ("$CHOICE" == "" || ${#CHOICE} -le 5 ) ]]; then
 fi
     
 # Auto overwrite is "<<< y"
-ssh-keygen -t rsa -b 4096 -C "" -f ${CHOICE} -N "" <<< y
+ssh-keygen -t ed25519 -a 100 -C "" -f ${CHOICE} -N "" <<< y
 
 echo "Done. Use with \$ssh -i ./${CHOICE} user@${CHOICE}"
