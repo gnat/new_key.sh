@@ -2,6 +2,7 @@
 # Generates new key pair.
 #     * ed25519 elliptic curve is equivalent to RSA 4096 bit standard. Ex: ssh-keygen -t rsa -b 4096
 #     * Dropbear now supports ed25519 in Ubuntu 22.04.
+#     * Some legacy apps may still require RSA 4096.
 # Examples:
 #     new_key.sh domain.com
 #     echo "domain.com" | new_key.sh
@@ -30,5 +31,7 @@ fi
     
 # Auto overwrite is "<<< y"
 ssh-keygen -t ed25519 -a 100 -C "" -f ${CHOICE} -N "" <<< y
+# Uncomment to use RSA, for legacy apps only!
+# ssh-keygen -t rsa -b 4096 -C "" -f ${CHOICE} -N "" <<< y
 
 echo "Done. Use with \$ssh -i ./${CHOICE} user@${CHOICE}"
