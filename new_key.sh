@@ -24,7 +24,7 @@ else
 fi
 
 CHOICE=${CHOICE,,*( )} # Lowercase and trim.
-if [[ ("$CHOICE" == "" || ${#CHOICE} -le 5 ) ]]; then
+if [[ ("$CHOICE" == "" || ${#CHOICE} -le 2 ) ]]; then
     echo "'${CHOICE}' is too short or invalid."
     exit 1
 fi
